@@ -82,6 +82,7 @@ useEffect(()=>{
     logToken()
   }
 },[user])
+
   const value = {
     currency,allCourses,navigate,calculateRating,isEducator,setIsEducator,calculateNoOfLectures,calculateChapterTime,calculateCourseDuration,enrolledCourses,fetchUserEnrolledCourses,
   };
