@@ -1,10 +1,10 @@
-import express from 'express';
-import { updateRoleToEducator } from '../controllers/educatorController.js';
+import express from 'express'
 
-const educatorRouter = express.Router();
+import { updateRoleToEducator } from '../controllers/educatorController.js'
 
-// Use PATCH or PUT for updates instead of GET
-educatorRouter.patch('/update-role', updateRoleToEducator);
+const  educatorRouter=express.Router()
 
+//Add Educator Role
+educatorRouter.get('/update-role',updateRoleToEducator);
 
 export default educatorRouter;

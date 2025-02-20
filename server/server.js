@@ -8,10 +8,6 @@ import { clerkMiddleware } from '@clerk/express'
 //Initalize Express
 const app=express()
 
-//cpnnect to database
-
-await connectDB()
-
 //Middlewares
 app.use(cors())
 app.use(clerkMiddleware())
@@ -21,7 +17,10 @@ app.get('/',(req,res)=>res.send("API WORKING"))
 app.post('/clerk', express.json(), clerkWebhooks)
 app.use('/api/educator',express.json(),educatorRouter)
 //Portu
-const PORT =process.env.PORT || 5000
-app.listen(PORT,()=>{
-    console.log(`server is running on port ${PORT}`)
-})
+const PORT =process.env.PORT || 5000;
+connectDB().then(() => {
+    app.listen(PORT, () => {
+      connectCloudinary();
+      console.log(`Server is running on http://localhost:${PORT}`);
+    });
+  });
