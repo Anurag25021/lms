@@ -6,4 +6,5 @@ const educatorRouter = express.Router();
 // Use PATCH or PUT for updates instead of GET
 educatorRouter.patch('/update-role', updateRoleToEducator);
 
+
 export default educatorRouter;
