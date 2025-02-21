@@ -5,12 +5,34 @@ import { useClerk, UserButton, useUser } from '@clerk/clerk-react';
 import { AppContext } from '../../context/AppContext';
 
 const Navbar = () => {
+
   const location = useLocation();
   const isCourseListPage = location.pathname.includes('/course-list');
    
   const  {openSignIn}=useClerk()
  const {user}=useUser();
-const {navigate,isEducator}=useContext(AppContext)
+const {navigate,isEducator,backendUrl,setIsEducator,getToken}=useContext(AppContext)
+const becomeEducator = async () => {
+  if (isEducator) {
+    navigate("/educator");
+    return;
+  }
+  const token = await getToken();
+  const { data } = await axios.get(backendUrl + "/api/educator/update-role", {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (data.success) {
+    toast.success(data.message);
+    setIsEducator(true);
+  } else {
+    toast.error(data.message);
+  }
+
+
+};
 
 
   return (
