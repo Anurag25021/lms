@@ -1,19 +1,20 @@
 import mongoose from "mongoose";
 
-const userSchema =new mongoose.Schema(
+const userSchema = new mongoose.Schema(
     {
-        _id:{type:String,required:true},
-        name:{type:String,required:true},
-        email:{type:String,required:true},
-        imageUrl:{type:String,required:true},
-        enrolledCourses:[
+        _id: { type: String, required: true },
+        name: { type: String, required: true },
+        email: { type: String, required: true },
+        imageUrl: { type: String, required: true },
+        enrolledCourses: [
             {
-                type:mongoose.Schema.Types.ObjectId,
-                ref:'Course'
-            }
-        ]
-
-    },{timestamps:true}
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Course",
+            },
+        ],
+    },
+    { timestamps: true }
 );
-const user=mongoose.model('user',userSchema);
-export default user
+
+const User = mongoose.model("User", userSchema); // Model name should be capitalized
+export default User;
