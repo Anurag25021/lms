@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AppContext } from "../../context/AppContext";
-import Loading from "../../components/common/Loading";
+import Loading from "../../components/student/Loading";
 import { assets } from "../../assets/assets";
 import humanizeDuration from "humanize-duration";
 import Rating from "../../components/student/Rating";
 import Footer from "../../components/student/Footer";
 import Youtube from "react-youtube";
-import { toast } from "sonner";
+import { toast } from "react-toastify";
 import axios from "axios";
 
 const CourseDetails = () => {

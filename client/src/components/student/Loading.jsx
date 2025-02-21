@@ -1,21 +1,26 @@
-import React, { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 
 const Loading = () => {
-  const {path}=useParams()
-  const navigate =useNavigate();
+  const { path } = useParams(); // Destructure `path` from useParams
+  const navigate = useNavigate();
 
-  useEffect(()=>{
-    if(path){
-      const timer=setTimeout(()=>{
-        navigate('/${path')
-      },5000) 
-      return ()=> clearTimeout(timer);
+  useEffect(() => {
+    if (path) {
+      const timer = setTimeout(() => {
+        navigate(`/${path}`); // Corrected string interpolation
+      }, 5000);
+
+      return () => clearTimeout(timer); // Cleanup the timer on component unmount
     }
-  },[])
-  return (
-    
-  )
-}
+  }, [path, navigate]); // Added `path` and `navigate` to the dependency array
 
-export default Loading
+  return (
+    <div>
+      <h1>Loading...</h1>
+      {/* You can add a loading spinner or any other loading indicator here */}
+    </div>
+  );
+};
+
+export default Loading;
