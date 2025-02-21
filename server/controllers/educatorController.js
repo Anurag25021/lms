@@ -35,6 +35,6 @@ export const addCourse =async(req,res)=>{
         await newCourse.save()
         res.json({success:true,message:'Course Added'})
     }catch(error){
-        res.json({success:false,message:error.message})
+        res.json({success:false,message:"Hello not ower"})
     }
 }
