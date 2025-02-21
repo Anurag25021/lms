@@ -13,12 +13,13 @@ const app =express()
 await connectDB()
 
 //Middleware
+app.use(express.json());
 app.use(cors())
 app.use(clerkMiddleware())
 
 //Router
 app.get('/',(req,res)=>res.send("API Working"))
-app.post('/clerk',express.json(), clerkWebhooks)
+app.post('/clerk', clerkWebhooks)
 app.use('/api/educator',express.json(),educatorRouter)
 //Port
 const PORT =process.env.PORT ||5000
