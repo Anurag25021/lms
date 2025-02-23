@@ -1,3 +1,4 @@
+import User from "../models/User.js"
 export const getUserData = async(req,res)=>{
     try{
         const userId=req.auth.userId
