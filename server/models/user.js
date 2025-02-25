@@ -2,14 +2,9 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
     {
-        _id: { type: String, required: true }, // 🔹 Keep as String if using external IDs (e.g., Clerk)
+        _id: { type: String, required: true },
         name: { type: String, required: true },
-        email: { 
-            type: String, 
-            required: true, 
-            unique: true, // 🔹 Prevent duplicate users
-            index: true   // 🔹 Optimize email-based lookups
-        },
+        email: { type: String, required: true },
         imageUrl: { type: String, required: true },
         enrolledCourses: [
             {
